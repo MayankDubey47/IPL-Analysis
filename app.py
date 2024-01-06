@@ -284,7 +284,7 @@ def load_team_details(team):
 
     with col7:
 
-        st.subheader('Winning percentage while defending',divider='rainbow')
+        st.subheader('Winning percentage while defending',divider='violet')
         fig, ax = plt.subplots()
         ax.pie(
             xyz['winner1'].value_counts(),
@@ -297,7 +297,7 @@ def load_team_details(team):
         st.pyplot(fig)
 
     with col8:
-        st.subheader('Winning percentage while chasing',divider='rainbow')
+        st.subheader('Winning percentage while chasing',divider='violet')
         fig, ax = plt.subplots()
         ax.pie(
             sp['winner1'].value_counts(),
