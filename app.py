@@ -191,12 +191,12 @@ def load_overall_analysis():
     st.subheader('Total number of matches played by each team',divider='violet')
     st.bar_chart(df2['Team1'].value_counts()+df2['Team2'].value_counts())
 
+
+    df2['toss'] = df2.apply(lambda i: 'Team won the toss also wins the match' if i['TossWinner'] == i['WinningTeam'] else 'Team lost the toss but wins the match', axis=1)
     col12,col13=st.columns(2)
 
     with col12:
         
-        df2['toss'] = df2.apply(lambda i: 'Team won the toss also wins the match' if i['TossWinner'] == i[
-            'WinningTeam'] else 'Team lost the toss but wins the match', axis=1)
         st.subheader('Winning percentage with respect to toss decision',divider='violet')
         fig, ax = plt.subplots()
         ax.pie(
@@ -211,16 +211,16 @@ def load_overall_analysis():
 
     with col13:
         st.subheader('Winning percentage while chasing and defending', divider='violet')
-    fig, ax = plt.subplots()
-    ax.pie(
-        df2['WonBy'].value_counts(),
-        autopct="%1.1f%%",
-        explode=(0.02,0.01,0.04,0.2),
-        labels=df2['WonBy'].value_counts().index,
-        colors=['purple', 'lightcoral','red','blue']
-    )
-    ax.axis('equal')
-    st.pyplot(fig)
+        fig, ax = plt.subplots()
+        ax.pie(
+            df2['WonBy'].value_counts(),
+            autopct="%1.1f%%",
+            explode=(0.02,0.01,0.04,0.2),
+            labels=df2['WonBy'].value_counts().index,
+            colors=['purple', 'lightcoral','red','blue']
+        )
+        ax.axis('equal')
+        st.pyplot(fig)
 
     st.markdown("""
     ### Insights from Overall Analysis
