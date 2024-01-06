@@ -148,6 +148,9 @@ def load_overall_analysis():
     st.subheader('Top 5 highest wins while chasing',divider='violet')
     st.dataframe(chase_overall,column_config={'losing_team':'LosingTeam'})
 
+    st.subheader('Total no of matches win by each team', divider='violet')
+    st.line_chart(df2.groupby('WinningTeam')['MatchNumber'].count())
+
     col3,col4= st.columns(2)
     with col3:
 
@@ -188,14 +191,48 @@ def load_overall_analysis():
     st.subheader('Total number of matches played by each team',divider='violet')
     st.bar_chart(df2['Team1'].value_counts()+df2['Team2'].value_counts())
 
+    col12,col13=st.columns(2)
+
+    with col12:
+        
+        df2['toss'] = df2.apply(lambda i: 'Team won the toss also wins the match' if i['TossWinner'] == i[
+            'WinningTeam'] else 'Team lost the toss but wins the match', axis=1)
+        st.subheader('Winning percentage with respect to toss decision',divider='violet')
+        fig, ax = plt.subplots()
+        ax.pie(
+            df2['toss'].value_counts(),
+            autopct="%1.1f%%",
+            explode=(0, 0.1),
+            labels=df2['toss'].value_counts().index,
+            colors=['purple', 'lightcoral']
+        )
+        ax.axis('equal')
+        st.pyplot(fig)
+
+    with col13:
+        st.subheader('Winning percentage while chasing and defending', divider='violet')
+    fig, ax = plt.subplots()
+    ax.pie(
+        df2['WonBy'].value_counts(),
+        autopct="%1.1f%%",
+        explode=(0.02,0.01,0.04,0.2),
+        labels=df2['WonBy'].value_counts().index,
+        colors=['purple', 'lightcoral','red','blue']
+    )
+    ax.axis('equal')
+    st.pyplot(fig)
+
     st.markdown("""
     ### Insights from Overall Analysis
     - Mumbai Indians has won with the highest margin of 146 runs while defending
     - Royal Challengers Bangalore has 3 highest margin in top 5 margins while defensing and chasing as well
+    - Mumbai Indian has won most no of matches(131) followed by Chennai super Kings(121)
     - Total 15 Teams has played till now in 14 seasons of IPL
     - Mumbai Indians has played most number of matches
     - Mumbai Indians has won most number of seasons till now(5) followed by Chennai Super Kings (4)
     - AB de Villiers has won the most Player of the Match award - 25
+    - 53.6% of matches won by Chasing team
+    - 51.5% times team which won the toss also wins the match
     
     
     
