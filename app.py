@@ -273,7 +273,7 @@ def load_team_details(team):
                                axis=1)
 
     cd = df2[df2['TossWinner'] == team]
-    ba = cd[cd['TossDecision'] == 'bowl']
+    ba = cd[cd['TossDecision'] == 'field']
     efgh = df2[df2['Team1'].isin([team]) | df2['Team2'].isin([team])]
     mn = efgh[efgh['TossWinner'] != team]
     pq = mn[mn['TossDecision'] == 'bat']
