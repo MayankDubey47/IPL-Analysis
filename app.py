@@ -233,7 +233,7 @@ def load_overall_analysis():
     - AB de Villiers has won the most Player of the Match award - 25
     - 53.6% of matches won by Chasing team
     - 51.5% times team which won the toss also wins the match
-    - Virat Kohli is the leading run scorer in IPL with 6634 runs
+    - Virat Kohli is leading run scorer in IPL with 6634 runs
     - DJ Bravo is leading wicket taker with 183 wickets
     
     
