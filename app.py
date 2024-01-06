@@ -289,7 +289,7 @@ def load_team_details(team):
         ax.pie(
             xyz['winner1'].value_counts(),
             autopct="%1.1f%%",
-            
+            explode=(0,0.1),
             labels=xyz['winner1'].value_counts().index,
             colors=['purple', 'lightcoral']
         )
@@ -302,7 +302,7 @@ def load_team_details(team):
         ax.pie(
             sp['winner1'].value_counts(),
             autopct="%1.1f%%",
-            
+            explode=(0,0.1),
             labels=sp['winner1'].value_counts().index,
             colors=['purple', 'lightcoral']
         )
@@ -346,7 +346,7 @@ def load_team_details(team):
         ax.pie(
             df3['winner'].value_counts(),
             autopct="%1.1f%%",
-            
+            explode=(0,0.1),
             labels=df3['winner'].value_counts().index,
             colors=['purple', 'lightcoral']
         )
@@ -359,6 +359,7 @@ def load_team_details(team):
         ax.pie(
             df4['winner'].value_counts(),
             autopct="%1.1f%%",
+            explode=(0,0.1),
             labels=df4['winner'].value_counts().index,
             colors=['purple', 'lightcoral']
         )
