@@ -409,26 +409,26 @@ def load_team_details(team):
 
 
 
-st.sidebar.title('IPL Analysis')
-option = st.sidebar.selectbox('Select One',['Team','Player','Overall Analysis'])
+st.title('IPL Analysis')
+option = st.selectbox('Select One',['Team','Player','Overall Analysis'])
 
 if option == 'Overall Analysis':
-    btn0 = st.sidebar.button('Show Overall Analysis')
+    btn0 = st.button('Show Overall Analysis')
     if btn0:
         load_overall_analysis()
 
 
 
 elif option =='Team':
-    selected_team = st.sidebar.selectbox('Select Team',sorted(df['Team1'].unique().tolist()))
-    btn1=st.sidebar.button('Find Team Details')
+    selected_team = st.selectbox('Select Team',sorted(df['Team1'].unique().tolist()))
+    btn1=st.button('Find Team Details')
     if btn1:
         load_team_details(selected_team)
 
 
 else:
-    selected_player= st.sidebar.selectbox('Select Player', unique_players)
-    btn2=st.sidebar.button('Find Player Details')
+    selected_player= st.selectbox('Select Player', unique_players)
+    btn2=st.button('Find Player Details')
     if btn2:
         load_player_details(selected_player)
 
